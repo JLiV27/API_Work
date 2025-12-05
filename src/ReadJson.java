@@ -93,6 +93,7 @@ public class ReadJson {
 
             JSONArray abilities = (JSONArray)jsonObject.get("abilities");
 
+
             /*org.json.simple.JSONArray msg = (org.json.simple.JSONArray) jsonObject.get("films");
             int n =   msg.size(); //(msg).length();
             for (int i = 0; i < n; ++i) {
@@ -103,10 +104,20 @@ public class ReadJson {
 
             int x = abilities.size();
 
+            System.out.println("\n********************\n");
+
             for (int i = 0; i < x; i++) {
                 JSONObject print = (JSONObject) abilities.get(i);
-                System.out.println(print);
+
+                String name = print.toString();
+
+                String[] abilityName = name.split("\"name\":\"");
+                int nameLength = abilityName[1].indexOf("\"");
+                abilityName[1] = abilityName[1].substring(0, nameLength);
+                System.out.println(abilityName[1]);
             }
+
+            System.out.println();
         }
 
         catch (Exception e) {
