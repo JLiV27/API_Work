@@ -14,26 +14,29 @@ import org.json.simple.parser.ParseException;
 
 // Program for print data in JSON format.
 public class ReadJson {
+
+    public int idNum;
+
     public static void main(String args[]) throws ParseException {
 
-        ReadJson readingIsWhat = new ReadJson();
+        ReadJson readingIsWhat = new ReadJson(5);
 
     }
 
-    public ReadJson(){
+    public ReadJson(int pNum){
         try {
-            pull();
+            pull(pNum);
         }catch(Exception e){
             System.out.println(e);
         }
     }
 
-    public  void pull() throws ParseException {
+    public  void pull(int idNum) throws ParseException {
         String output = "abc";
         String totalJson = "";
         try {
 
-            URL url = new URL("https://pokeapi.co/api/v2/pokemon");
+            URL url = new URL("https://pokeapi.co/api/v2/pokemon/" + idNum + "/");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -53,7 +56,6 @@ public class ReadJson {
 
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
                 totalJson += output;
             }
 
@@ -67,31 +69,12 @@ public class ReadJson {
         }
 
         JSONParser parser = new JSONParser();
-        //System.out.println(str);
         org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(totalJson);
-        System.out.println(jsonObject);
 
         try {
 
-            JSONArray abilities = (JSONArray)jsonObject.get("abilities");
-            int idNumber = (int)jsonObject.get("id");
-            String pName = (String)jsonObject.get("name");
-
-
-            int x = abilities.size();
-
-            System.out.println("\n********************\n");
-
-//            for (int i = 0; i < x; i++) {
-//                JSONObject print = (JSONObject) abilities.get(i);
-//
-//                String name = print.toString();
-//
-//                String[] abilityName = name.split("\"name\":\"");
-//                int nameLength = abilityName[1].indexOf("\"");
-//                abilityName[1] = abilityName[1].substring(0, nameLength);
-//                System.out.println(abilityName[1]);
-//            }
+            String name = (String)jsonObject.get("name");
+            long idNumber = (long)jsonObject.get("id");
 
             System.out.println();
 

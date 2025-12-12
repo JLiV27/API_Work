@@ -22,10 +22,13 @@ public class SwingControlDemo implements ActionListener {
     private final int HEIGHT=700;
 
     public JLabel pokeName;
+    public ReadJson r;
 
 
     public SwingControlDemo() {
         prepareGUI();
+
+        r = new ReadJson(5);
     }
 
     public static void main(String[] args) {
@@ -111,7 +114,11 @@ public class SwingControlDemo implements ActionListener {
             String command = e.getActionCommand();
 
             if (command.equals("Prev")) {
-
+                try {
+                    pull();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
             }
             else if(command.equals("Next")){
 
