@@ -21,6 +21,9 @@ public class SwingControlDemo implements ActionListener {
     private final int WIDTH=800;
     private final int HEIGHT=700;
 
+    public JLabel pokeName;
+
+
     public SwingControlDemo() {
         prepareGUI();
     }
@@ -39,6 +42,9 @@ public class SwingControlDemo implements ActionListener {
         controlPanel = new JPanel();
         controlPanel.setSize(400,300);
         controlPanel.setLayout(new GridLayout(0,2));
+
+        JLabel pokeName = new JLabel("      Waiting for Pokemon");
+        JLabel pokeAbilities = new JLabel("     Waiting for Pokemon");
 
         //menu at top
         cut = new JMenuItem("cut");

@@ -75,6 +75,8 @@ public class ReadJson {
 
             JSONArray abilities = (JSONArray)jsonObject.get("abilities");
             int idNumber = (int)jsonObject.get("id");
+            String pName = (String)jsonObject.get("name");
+
 
             int x = abilities.size();
 
@@ -92,6 +94,7 @@ public class ReadJson {
 //            }
 
             System.out.println();
+
         }
 
         catch (Exception e) {
