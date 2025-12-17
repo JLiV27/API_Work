@@ -28,7 +28,7 @@ public class SwingControlDemo implements ActionListener {
     public SwingControlDemo() {
         prepareGUI();
 
-        r = new ReadJson(5);
+        r = new ReadJson(0);
     }
 
     public static void main(String[] args) {
@@ -72,12 +72,6 @@ public class SwingControlDemo implements ActionListener {
         mb.add(help);
         //end menu at top
 
-//        mainFrame.addWindowListener(new WindowAdapter() {
-//            public void windowClosing(WindowEvent windowEvent) {
-//                System.exit(0);
-//            }
-//        });
-
         mainFrame.setVisible(true);
     }
 
@@ -115,9 +109,9 @@ public class SwingControlDemo implements ActionListener {
 
             if (command.equals("Prev")) {
                 try {
-                    pull();
-                }catch(Exception e){
-                    System.out.println(e);
+
+                }catch(Exception x){
+                    System.out.println(x);
                 }
             }
             else if(command.equals("Next")){
