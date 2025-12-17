@@ -17,12 +17,6 @@ public class ReadJson {
 
     public int idNum;
 
-    public static void main(String args[]) throws ParseException {
-
-        ReadJson readingIsWhat = new ReadJson(5);
-
-    }
-
     public ReadJson(int pNum){
         try {
             pull(pNum);
@@ -75,8 +69,18 @@ public class ReadJson {
 
             String name = (String)jsonObject.get("name");
             long idNumber = (long)jsonObject.get("id");
+            JSONArray abilities = (JSONArray)jsonObject.get("abilities");
 
-            System.out.println();
+            int aSize = abilities.size();
+
+            for (int i = 0; i < aSize; i++) {
+                JSONObject abilName = (JSONObject)abilities.get(i);
+                JSONObject abilityName = (JSONObject) abilName.get("ability");
+                System.out.println(abilityName.get("name"));
+            }
+
+            System.out.println(name);
+            System.out.println(idNumber);
 
         }
 

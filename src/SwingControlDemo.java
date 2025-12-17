@@ -24,6 +24,7 @@ public class SwingControlDemo implements ActionListener {
     public JLabel pokeName;
     public ReadJson r;
 
+    public int currentPokemon = 1;
 
     public SwingControlDemo() {
         prepareGUI();
@@ -108,14 +109,22 @@ public class SwingControlDemo implements ActionListener {
             String command = e.getActionCommand();
 
             if (command.equals("Prev")) {
-                try {
+                currentPokemon--;
 
+                try {
+                    r.pull(currentPokemon);
                 }catch(Exception x){
                     System.out.println(x);
                 }
             }
             else if(command.equals("Next")){
+                currentPokemon++;
 
+                try {
+                    r.pull(currentPokemon);
+                }catch(Exception x){
+                    System.out.println(x);
+                }
             }
                 try{
                 } catch(Exception ex) {
