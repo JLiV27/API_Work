@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Objects;
 
 public class SwingControlDemo implements ActionListener {
     private JFrame mainFrame;
@@ -22,7 +23,9 @@ public class SwingControlDemo implements ActionListener {
     private final int HEIGHT=700;
 
     private JTextArea taPromptInput;
+    private JTextArea taPhilosopher;
     private JTextArea taPromptOutput;
+    private JButton qAsk;
     public ReadJson r;
 
     public int currentPokemon = 1;
@@ -41,12 +44,12 @@ public class SwingControlDemo implements ActionListener {
     private void prepareGUI() {
         mainFrame = new JFrame("Java SWING Examples");
         mainFrame.setSize(WIDTH, HEIGHT);
-        mainFrame.setLayout(new GridLayout(3, 1));
+        mainFrame.setLayout(new GridLayout(2, 1));
 
         assert controlPanel != null;
         controlPanel = new JPanel();
         controlPanel.setSize(400,300);
-        controlPanel.setLayout(new GridLayout(0,2));
+        controlPanel.setLayout(new GridLayout(1,3));
 
         JLabel pokeName = new JLabel("      Waiting for Pokemon");
         JLabel pokeAbilities = new JLabel("     Waiting for Pokemon");
@@ -79,15 +82,25 @@ public class SwingControlDemo implements ActionListener {
 
     private void showEventDemo() {
 
-        taPromptInput = new JTextArea("Waiting for input..."); //creates JText Area Object
+        taPromptInput = new JTextArea("Input Philosophical Question"); //creates JText Area Object
         taPromptInput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        taPromptOutput = new JTextArea("Waiting for input..."); //creates JText Area Object
+        taPhilosopher = new JTextArea("Input Thinker"); //creates JText Area Object
+        taPhilosopher.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
+
+        taPromptOutput = new JTextArea("Waiting..."); //creates JText Area Object
         taPromptOutput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        mainFrame.add(taPromptInput);
-        mainFrame.add(taPromptOutput);
+        JButton askButton = new JButton("Ask Question");
+        askButton.setActionCommand("Ask");
+        askButton.addActionListener(new ButtonClickListener()); //adds a listener to whenever the button is clicked
+
         mainFrame.add(controlPanel);
+        controlPanel.add(taPromptInput);
+        controlPanel.add(askButton);
+        controlPanel.add(taPhilosopher);
+        mainFrame.add(taPromptOutput);
+
 
         mainFrame.setVisible(true);
     }
@@ -100,6 +113,10 @@ public class SwingControlDemo implements ActionListener {
     private class ButtonClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
+
+            if(Objects.equals(command, "Ask")){
+
+            }
 
         }
 
