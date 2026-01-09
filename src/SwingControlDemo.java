@@ -21,7 +21,8 @@ public class SwingControlDemo implements ActionListener {
     private final int WIDTH=800;
     private final int HEIGHT=700;
 
-    public JLabel pokeName;
+    private JTextArea taPromptInput;
+    private JTextArea taPromptOutput;
     public ReadJson r;
 
     public int currentPokemon = 1;
@@ -78,22 +79,14 @@ public class SwingControlDemo implements ActionListener {
 
     private void showEventDemo() {
 
-        JLabel pokeName = new JLabel("      Waiting for Pokemon");
-        JLabel pokeAbilities = new JLabel("     Waiting for Pokemon");
+        taPromptInput = new JTextArea("Waiting for input..."); //creates JText Area Object
+        taPromptInput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        JButton prevButton = new JButton("Prev");
-        JButton nextButton = new JButton("Next");
+        taPromptOutput = new JTextArea("Waiting for input..."); //creates JText Area Object
+        taPromptOutput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        prevButton.addActionListener(new ButtonClickListener());
-        nextButton.addActionListener(new ButtonClickListener());
-
-        prevButton.setActionCommand("Prev");
-        nextButton.setActionCommand("Next");
-
-        mainFrame.add(pokeName);
-        mainFrame.add(pokeAbilities);
-        controlPanel.add(prevButton);
-        controlPanel.add(nextButton);
+        mainFrame.add(taPromptInput);
+        mainFrame.add(taPromptOutput);
         mainFrame.add(controlPanel);
 
         mainFrame.setVisible(true);
@@ -108,30 +101,9 @@ public class SwingControlDemo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
 
-            if (command.equals("Prev")) {
-                currentPokemon--;
-
-                try {
-                    r.pull(currentPokemon);
-                }catch(Exception x){
-                    System.out.println(x);
-                }
-            }
-            else if(command.equals("Next")){
-                currentPokemon++;
-
-                try {
-                    r.pull(currentPokemon);
-                }catch(Exception x){
-                    System.out.println(x);
-                }
-            }
-                try{
-                } catch(Exception ex) {
-                    System.out.println(ex);
-                }
-            }
         }
+
+    }
 
         private BufferedReader getBufferedReader() {
 

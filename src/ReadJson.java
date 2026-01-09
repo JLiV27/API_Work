@@ -19,18 +19,18 @@ public class ReadJson {
 
     public ReadJson(int pNum){
         try {
-            pull(pNum);
+            pull();
         }catch(Exception e){
             System.out.println(e);
         }
     }
 
-    public  void pull(int idNum) throws ParseException {
+    public  void pull() throws ParseException {
         String output = "abc";
         String totalJson = "";
         try {
 
-            URL url = new URL("https://pokeapi.co/api/v2/pokemon/" + idNum + "/");
+            URL url = new URL("https://last-airbender-api.fly.dev/");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -81,6 +81,7 @@ public class ReadJson {
 
             System.out.println(name);
             System.out.println(idNumber);
+
 
         }
 
