@@ -30,7 +30,7 @@ public class ReadJson {
         String totalJson = "";
         try {
 
-            URL url = new URL("https://last-airbender-api.fly.dev/");
+            URL url = new URL("https://philosophyapi.pythonanywhere.com/api/philosophers/");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -66,22 +66,15 @@ public class ReadJson {
         org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(totalJson);
 
         try {
+            JSONArray thinkers = (JSONArray)jsonObject.get("name");
 
-            String name = (String)jsonObject.get("name");
-            long idNumber = (long)jsonObject.get("id");
-            JSONArray abilities = (JSONArray)jsonObject.get("abilities");
+            int size = thinkers.size();
 
-            int aSize = abilities.size();
-
-            for (int i = 0; i < aSize; i++) {
-                JSONObject abilName = (JSONObject)abilities.get(i);
-                JSONObject abilityName = (JSONObject) abilName.get("ability");
-                System.out.println(abilityName.get("name"));
+            for (int i = 0; i < size; i++) {
+                JSONObject thinkerName = (JSONObject)thinkers.get(i);
+                JSONObject pName = (JSONObject) thinkerName.get("name");
+                System.out.println(pName.get("name"));
             }
-
-            System.out.println(name);
-            System.out.println(idNumber);
-
 
         }
 

@@ -1,14 +1,9 @@
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Objects;
@@ -25,7 +20,7 @@ public class SwingControlDemo implements ActionListener {
     private JTextArea taPromptInput;
     private JTextArea taPhilosopher;
     private JTextArea taPromptOutput;
-    private JButton qAsk;
+    private JComboBox<String> thinkerBox;
     public ReadJson r;
 
     public int currentPokemon = 1;
@@ -50,9 +45,6 @@ public class SwingControlDemo implements ActionListener {
         controlPanel = new JPanel();
         controlPanel.setSize(400,300);
         controlPanel.setLayout(new GridLayout(1,3));
-
-        JLabel pokeName = new JLabel("      Waiting for Pokemon");
-        JLabel pokeAbilities = new JLabel("     Waiting for Pokemon");
 
         //menu at top
         cut = new JMenuItem("cut");
@@ -85,11 +77,12 @@ public class SwingControlDemo implements ActionListener {
         taPromptInput = new JTextArea("Input Philosophical Question"); //creates JText Area Object
         taPromptInput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        taPhilosopher = new JTextArea("Input Thinker"); //creates JText Area Object
-        taPhilosopher.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
-
         taPromptOutput = new JTextArea("Waiting..."); //creates JText Area Object
         taPromptOutput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
+
+        String[] thinkers = {"Yeat", "Ken Carson", "Mobb Deep"};
+
+        thinkerBox = new JComboBox<>(thinkers);
 
         JButton askButton = new JButton("Ask Question");
         askButton.setActionCommand("Ask");
@@ -98,9 +91,8 @@ public class SwingControlDemo implements ActionListener {
         mainFrame.add(controlPanel);
         controlPanel.add(taPromptInput);
         controlPanel.add(askButton);
-        controlPanel.add(taPhilosopher);
+        controlPanel.add(thinkerBox);
         mainFrame.add(taPromptOutput);
-
 
         mainFrame.setVisible(true);
     }
