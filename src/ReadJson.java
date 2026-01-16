@@ -74,6 +74,8 @@ public class ReadJson {
                 JSONObject thinkerName = (JSONObject)thinkers.get(i);
                 JSONObject pName = (JSONObject) thinkerName.get("name");
                 System.out.println(pName.get("name"));
+
+                String[] thinkerNames;
             }
 
         }

@@ -80,7 +80,7 @@ public class SwingControlDemo implements ActionListener {
         taPromptOutput = new JTextArea("Waiting..."); //creates JText Area Object
         taPromptOutput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        String[] thinkers = {"Yeat", "Ken Carson", "Mobb Deep"};
+        String[] thinkers = {"thinker1","thinker2","thinker3","thinker4"};
 
         thinkerBox = new JComboBox<>(thinkers);
 
@@ -108,6 +108,10 @@ public class SwingControlDemo implements ActionListener {
 
             if(Objects.equals(command, "Ask")){
 
+                String thinker = (String) thinkerBox.getSelectedItem();
+
+                System.out.println("From the perspective of " + thinker + "and taking into consideration their " +
+                        "famous ideas like " + " give a modernized version of an answer to the question " + taPromptInput.getText());
             }
 
         }
