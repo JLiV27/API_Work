@@ -4,9 +4,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,9 +13,9 @@ import org.json.simple.parser.ParseException;
 // Program for print data in JSON format.
 public class ReadJson {
 
-    public int idNum;
+    public String[] thinkerNames;
 
-    public ReadJson(int pNum){
+    public readJson(int pNum){
         try {
             pull();
         }catch(Exception e){
@@ -66,16 +64,17 @@ public class ReadJson {
         org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(totalJson);
 
         try {
-            JSONArray thinkers = (JSONArray)jsonObject.get("name");
 
-            int size = thinkers.size();
+            JSONArray allThinkers = (JSONArray)jsonObject.get("results");
+
+            int size = allThinkers.size();
 
             for (int i = 0; i < size; i++) {
-                JSONObject thinkerName = (JSONObject)thinkers.get(i);
-                JSONObject pName = (JSONObject) thinkerName.get("name");
-                System.out.println(pName.get("name"));
+                JSONObject thinker = (JSONObject)allThinkers.get(i);
+                String name = (String) thinker.get("name");
+                System.out.println(name);
 
-                String[] thinkerNames;
+                thinkerNames[i] = name;
             }
 
         }
@@ -88,6 +87,9 @@ public class ReadJson {
 //
 
     }
+}
+
+void main() {
 }
 
 
