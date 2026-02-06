@@ -11,11 +11,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 // Program for print data in JSON format.
-public class readJson {
+public class ReadJson {
 
-    public String[] thinkerNames;
+    public String[] thinkerNames = new String[9];
 
-    public readJson(int pNum){
+    public ReadJson(){
         try {
             pull();
         }catch(Exception e){
@@ -72,7 +72,6 @@ public class readJson {
             for (int i = 0; i < size; i++) {
                 JSONObject thinker = (JSONObject)allThinkers.get(i);
                 String name = (String) thinker.get("name");
-                System.out.println(name);
 
                 thinkerNames[i] = name;
             }
@@ -89,7 +88,7 @@ public class readJson {
     }
 }
 
-void main() {
-}
+//printStackTracevoid main() {
+//}
 
 

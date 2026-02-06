@@ -22,7 +22,10 @@ public class SwingControlDemo implements ActionListener {
     private JTextArea taPromptOutput;
     private JComboBox<String> thinkerBox;
 
+    public ReadJson rj;
+
     public SwingControlDemo() {
+        rj = new ReadJson();
         prepareGUI();
     }
 
@@ -76,7 +79,9 @@ public class SwingControlDemo implements ActionListener {
         taPromptOutput = new JTextArea("Waiting..."); //creates JText Area Object
         taPromptOutput.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-        String[] thinkers = {"thinker1","thinker2","thinker3","thinker4"};
+        String[] thinkers = rj.thinkerNames;
+
+
 
         thinkerBox = new JComboBox<>(thinkers);
 
