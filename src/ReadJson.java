@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 // Program for print data in JSON format.
-public class ReadJson {
+public class readJson {
 
     public String[] thinkerNames;
 
@@ -23,7 +23,7 @@ public class ReadJson {
         }
     }
 
-    public  void pull() throws ParseException {
+    public void pull() throws ParseException {
         String output = "abc";
         String totalJson = "";
         try {

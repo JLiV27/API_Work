@@ -21,19 +21,15 @@ public class SwingControlDemo implements ActionListener {
     private JTextArea taPhilosopher;
     private JTextArea taPromptOutput;
     private JComboBox<String> thinkerBox;
-    public ReadJson r;
-
-    public int currentPokemon = 1;
 
     public SwingControlDemo() {
         prepareGUI();
-
-        r = new ReadJson(0);
     }
 
     public static void main(String[] args) {
         SwingControlDemo swingControlDemo = new SwingControlDemo();
         swingControlDemo.showEventDemo();
+
     }
 
     private void prepareGUI() {
